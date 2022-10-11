@@ -1,9 +1,8 @@
 import random
-import os
-import time
  
 # The Card class definition
 class Card:
+
     def __init__(self, suit, value, card_value):
          
         # Suit of the Card like Spades and Clubs
@@ -14,11 +13,7 @@ class Card:
  
         # Score Value for the Card like 10 for King
         self.card_value = card_value
- 
-# Clear the terminal
-def clear():
-    os.system("clear")
- 
+
 # Function to print the cards
 def print_cards(cards, hidden):
          
@@ -129,23 +124,18 @@ def print_cards(cards, hidden):
  
     print()
  
- 
 # Function for a single game of blackjack
 def blackjack_game(deck):
 
-    print("""
+    print("""\033[92m
 
-.-..-. _  .-.                 .--.  .-.                .-.   .--. 
+.-..-. _  .-.                 .--.  .-.                .-.   .--.
 : :; ::_;.' `.               : .--'.' `.               : :  :_,. :
 :    :.-.`. .'   .--. .--.   `. `. `. .'.--.  ,-.,-. .-' :    ,','
-: :: :: : : :   ' .; :: ..'   _`, : : :' .; ; : ,. :' .; :   :_;  
-:_;:_;:_; :_;   `.__.':_;    `.__.' :_;`.__,_;:_;:_;`.__.'   :_;  
-                                                                  
+: :: :: : : :   ' .; :: ..'   _`, : : :' .; ; : ,. :' .; :   :_;
+:_;:_;:_; :_;   `.__.':_;    `.__.' :_;`.__,_;:_;:_;`.__.'   :_;                                                           
 
-    """)
-    
-
-    
+    \033[0m""")
 
     while True:
         player1 = input("What is your name, superstar? ")
@@ -158,17 +148,30 @@ def blackjack_game(deck):
 
     print("Welcome {}! Let's play! ".format(player1.upper()))
     print("-"*40)
-    print("WELCOME TO THE BLACKJACK TABLE")
+    print("\033[92mWELCOME TO THE BLACKJACK TABLE\033[0m")
     print("-"*40)
 
+    while True:
+        drink = input("Would you like a drink? (Y/N) ")
+            
+        if drink == '':
+            print("Please make a choice  ")
 
-    drink = input("Would you like a drink? (Y/N) ")
-    if drink.upper() == "N":
-        pass
+        elif drink != '':
+            break
+
     if drink.upper() == "Y":
         drink_choice = str(input("Perfect! What kind of drink would you like? eg.(1,2,3)\n 1. Beer  2. Wine  3. Cocktail   "))
+
+        while True:    
+            if drink_choice == '':
+                print("Please make a choice  ")
+
+            elif drink_choice != '':
+                break 
+
         if drink_choice == '1':
-            print("""
+            print("""\033[93m
          .   *   ..  . *  *
        *  * @()Ooc()*   o  .
            (Q@*0CG*O()  ___
@@ -185,9 +188,10 @@ def blackjack_game(deck):
 
 There you are! Enjoy your beer!\n
 The bartenders are efficient around here.
-    """)
-        elif drink_choice == '2':
-            print("""
+    \033[0m""")
+        
+        if drink_choice == '2':
+            print("""\033[35m
                __
               [__]
               |  |
@@ -207,11 +211,10 @@ The bartenders are efficient around here.
 
 There you are! Enjoy your wine!\n
 The bartenders are efficient around here.
-    """)
-        elif drink_choice == '3':
-            print('''
-
-
+    \033[0m""")
+        
+        if drink_choice == '3':
+            print('''\033[96m        
          \ 
    .\"""""""""-.
    \`\-------'`/
@@ -227,7 +230,7 @@ The bartenders are efficient around here.
 
 There you are! Enjoy your cocktail!\n
 The bartenders are efficient around here.
-        ''')
+        \033[0m''')
 
     print("-"*40)
     rules = input("Do you know how to play? (Y/N) ")
