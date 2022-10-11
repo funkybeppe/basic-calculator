@@ -143,8 +143,32 @@ def blackjack_game(deck):
                                                                   
 
     """)
-    print("""
+    
 
+    
+
+    while True:
+        player1 = input("What is your name, superstar? ")
+
+        if player1 == '':
+            print("Username is empty, please select a name")
+
+        elif player1 != '':
+            break
+
+    print("Welcome {}! Let's play! ".format(player1.upper()))
+    print("-"*40)
+    print("WELCOME TO THE BLACKJACK TABLE")
+    print("-"*40)
+
+
+    drink = input("Would you like a drink? (Y/N) ")
+    if drink.upper() == "N":
+        pass
+    if drink.upper() == "Y":
+        drink_choice = str(input("Perfect! What kind of drink would you like? eg.(1,2,3)\n 1. Beer  2. Wine  3. Cocktail   "))
+        if drink_choice == '1':
+            print("""
          .   *   ..  . *  *
        *  * @()Ooc()*   o  .
            (Q@*0CG*O()  ___
@@ -162,8 +186,8 @@ def blackjack_game(deck):
 There you are! Enjoy your beer!\n
 The bartenders are efficient around here.
     """)
-
-    print("""
+        elif drink_choice == '2':
+            print("""
                __
               [__]
               |  |
@@ -184,23 +208,8 @@ The bartenders are efficient around here.
 There you are! Enjoy your wine!\n
 The bartenders are efficient around here.
     """)
-
-    while True:
-        player1 = input("What is your name, superstar? ")
-
-        if player1 == '':
-            print("Username is empty, please select a name")
-
-        elif player1 != '':
-            break
-
-    print(f"Welcome {player1}! Let's play! ")
-    print("-"*40)
-    print("WELCOME TO THE BLACKJACK TABLE")
-    print("-"*40)
-    drink = input("Would you like a drink? (Y/N) ")
-    if drink == "Y":
-        print('''
+        elif drink_choice == '3':
+            print('''
 
 
          \ 
@@ -222,11 +231,11 @@ The bartenders are efficient around here.
 
     print("-"*40)
     rules = input("Do you know how to play? (Y/N) ")
-    if rules == "N":
+    if rules.upper() == "N":
         print("Okay! The rules are simple. You and the dealer will receive two cards in your hand. \n"
-              "Your goal is to beat the dealer by getting closer to 21. If you and the dealer have the same number \n"
+              "Your goal is to beat the dealer by getting closer to 21.\nIf you and the dealer have the same number, it's a tie or push \n"
               "Cards 2 - 10 counts as it's own number; jacks, queens, and kings counts as 10 each, and aces can count\n"
-              " as either 1 or 11. You can draw up to four cards at this table. House wins on a tie or push.")
+              "as either 1 or 11. You can draw up to four cards at this table.")
         print("-"*40)
         print("Let's begin blackjack!")
         print("-"*40)
@@ -260,9 +269,9 @@ The bartenders are efficient around here.
                 player_score -= 10
  
         # Print player cards and score      
-        print(f"{player1.upper()}'S CARDS: ")
+        print("{}'S CARDS: ".format(player1.upper()))
         print_cards(player_cards, False)
-        print(f"{player1.upper()}'S SCORE = ", player_score)
+        print("{}'S SCORE = ".format(player1.upper()), player_score)
  
         input()
  
@@ -293,14 +302,14 @@ The bartenders are efficient around here.
  
     # Player gets a blackjack   
     if player_score == 21:
-        print(f"{player1.upper()} HAS A BLACKJACK!!!!")
-        print(f"{player1.upper()} WINS!!!!")
+        print("{} HAS A BLACKJACK!!!!".format(player1.upper()))
+        print("{} WINS!!!!".format(player1.upper()))
         anothergame = input("Want to try another round?(Y/N) ")
-        if anothergame == "N":
+        if anothergame.upper() == "N":
             print("Thanks for playing! Come back for free martinis anytime!")
             quit()
 
-        elif anothergame == "Y":
+        elif anothergame.upper() == "Y":
             blackjack_game(deck)
  
     # Print dealer and player cards
@@ -310,9 +319,9 @@ The bartenders are efficient around here.
  
     print() 
  
-    print(f"{player1.upper()}'S CARDS: ")
+    print("{}'S CARDS: ".format(player1.upper()))
     print_cards(player_cards, False)
-    print(f"{player1.upper()}'S SCORE = ", player_score)
+    print("{}'S SCORE = ".format(player1.upper()), player_score)
  
     # Managing the player moves
     while player_score < 21:
@@ -352,9 +361,9 @@ The bartenders are efficient around here.
  
             print()
  
-            print(f"{player1.upper()}'S CARDS: ")
+            print("{}'S CARDS: ".format(player1.upper()))
             print_cards(player_cards, False)
-            print(f"{player1.upper()}'S SCORE = ", player_score)
+            print("{}'S SCORE = ".format(player1.upper()), player_score)
              
         # If player decides to Stand
         if choice.upper() == 'S':
@@ -362,9 +371,9 @@ The bartenders are efficient around here.
  
  
     # Print player and dealer cards
-    print(f"{player1.upper()}'S CARDS: ")
+    print("{}'S CARDS: ".format(player1.upper()))
     print_cards(player_cards, False)
-    print(f"{player1.upper()}'S SCORE = ", player_score)
+    print("{}'S SCORE = ".format(player1.upper()), player_score)
  
     print()
     print("DEALER IS REVEALING THE CARDS....")
@@ -375,24 +384,24 @@ The bartenders are efficient around here.
  
     # Check if player has a Blackjack
     if player_score == 21:
-        print(f"{player1.upper()} HAS A BLACKJACK")
+        print("{} HAS A BLACKJACK".format(player1.upper()))
         anothergame = input("Want to try another round?(Y/N) ")
-        if anothergame == "N":
+        if anothergame.upper() == "N":
             print("Thanks for playing! Come back for free martinis anytime!")
             quit()
 
-        elif anothergame == "Y":
+        elif anothergame.upper() == "Y":
             blackjack_game(deck)
  
     # Check if player busts
     if player_score > 21:
-        print(f"{player1.upper()} BUSTED!!! GAME OVER!!!")
+        print("{} BUSTED!!! GAME OVER!!!".format(player1.upper()))
         print("-"*40)
         anothergame = input("Want to try another round?(Y/N) ")
-        if anothergame == "N":
+        if anothergame.upper() == "N":
             print("Thanks for playing! Come back for free martinis anytime!")
             quit()
-        elif anothergame == "Y":
+        elif anothergame.upper() == "Y":
             blackjack_game(deck)
  
     input() 
@@ -421,9 +430,9 @@ The bartenders are efficient around here.
                 c += 1
  
         # print player and dealer cards
-        print(f"{player1.upper()}'S CARDS: ")
+        print("{}'S CARDS: ".format(player1.upper()))
         print_cards(player_cards, False)
-        print(f"{player1.upper()}'S SCORE = ", player_score)
+        print("{}'S SCORE = ".format(player1.upper()), player_score)
  
         print()
  
@@ -438,52 +447,52 @@ The bartenders are efficient around here.
         print("DEALER BUSTED!!! YOU WIN!!!") 
         print("-"*40)
         anothergame = input("Want to try another round?(Y/N) ")
-        if anothergame == "N":
+        if anothergame.upper() == "N":
             print("Thanks for playing! Come back for free martinis anytime!")
             quit()
 
-        elif anothergame == "Y":
+        elif anothergame.upper() == "Y":
             blackjack_game(deck)
  
     # Dealer gets a blackjack
     if dealer_score == 21:
-        print(f"DEALER HAS A BLACKJACK!!! {player1.upper()} LOSES")
+        print("DEALER HAS A BLACKJACK!!! {} LOSES".format(player1.upper()))
         anothergame = input("Want to try another round?(Y/N) ")
-        if anothergame == "N":
+        if anothergame.upper() == "N":
             print("Thanks for playing! Come back for free martinis anytime!")
             quit()
 
-        elif anothergame == "Y":
+        elif anothergame.upper() == "Y":
             blackjack_game(deck)
  
     # TIE Game
     if dealer_score == player_score:
         print("TIE GAME!!!!")
         anothergame = input("Want to try another round?(Y/N) ")
-        if anothergame == "N":
+        if anothergame.upper() == "N":
             print("Thanks for playing! Come back for free martinis anytime!")
             quit()
-        elif anothergame == "Y":
+        elif anothergame.upper() == "Y":
             blackjack_game(deck)
  
     # Player Wins
     elif player_score > dealer_score:
-        print(f"{player1.upper()} WINS!!!")
+        print("{} WINS!!!".format(player1.upper()))
         anothergame = input("Want to try another round?(Y/N) ")
-        if anothergame == "N":
+        if anothergame.upper() == "N":
             print("Thanks for playing! Come back for free martinis anytime!")
             quit()
-        elif anothergame == "Y":
+        elif anothergame.upper() == "Y":
             blackjack_game(deck)                 
  
     # Dealer Wins
     else:
         print("DEALER WINS!!!")
         anothergame = input("Want to try another round?(Y/N) ")
-        if anothergame == "N":
+        if anothergame.upper() == "N":
             print("Thanks for playing! Come back for free martinis anytime!")
             quit()
-        elif anothergame == "Y":
+        elif anothergame.upper() == "Y":
             blackjack_game(deck)                 
  
 if __name__ == '__main__':
