@@ -1,4 +1,5 @@
 import random
+import pyinputplus as pyip
  
 # The Card class definition
 class Card:
@@ -161,16 +162,9 @@ def blackjack_game(deck):
             break
 
     if drink.upper() == "Y":
-        drink_choice = str(input("Perfect! What kind of drink would you like? eg.(1,2,3)\n 1. Beer  2. Wine  3. Cocktail   "))
+        drink_choice = pyip.inputNum(prompt="Perfect! What kind of drink would you like? eg.(1,2,3)\n 1. Beer  2. Wine  3. Cocktail   ", min=1, lessThan=4)
 
-        while True:    
-            if drink_choice == '':
-                print("Please make a choice  ")
-
-            elif drink_choice != '':
-                break 
-
-        if drink_choice == '1':
+        if drink_choice == 1:
             print("""\033[93m
          .   *   ..  . *  *
        *  * @()Ooc()*   o  .
@@ -190,7 +184,7 @@ There you are! Enjoy your beer!\n
 The bartenders are efficient around here.
     \033[0m""")
         
-        if drink_choice == '2':
+        if drink_choice == 2:
             print("""\033[35m
                __
               [__]
@@ -213,7 +207,7 @@ There you are! Enjoy your wine!\n
 The bartenders are efficient around here.
     \033[0m""")
         
-        if drink_choice == '3':
+        if drink_choice == 3:
             print('''\033[96m        
          \ 
    .\"""""""""-.
